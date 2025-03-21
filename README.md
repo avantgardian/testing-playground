@@ -80,7 +80,8 @@ testing-playground/
 │   ├── css/
 │   │   └── vendor/
 │   │       └── pico.min.css
-│   └── index.html
+│   ├── index.html
+│   └── contact.html
 ├── .gitignore
 └── README.md
 ```

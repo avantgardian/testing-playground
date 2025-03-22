@@ -1,0 +1,15 @@
+{
+  "name": "testing-playground",
+  "version": "1.0.0",
+  "description": "A playground for testing different web testing frameworks",
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "test:webdriverio": "cd tests/webdriverio && npm test",
+    "test:cypress": "cd tests/cypress && npm test",
+    "test:playwright": "cd tests/playwright && npm test",
+    "test:testcafe": "cd tests/testcafe && npm test"
+  },
+  "keywords": ["testing", "webdriverio", "cypress", "playwright", "testcafe"],
+  "author": "",
+  "license": "ISC"
+} 

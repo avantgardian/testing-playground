@@ -1,100 +1,68 @@
 # Testing Playground
 
-A comprehensive web application designed to demonstrate and compare different testing approaches. This project implements the same tests using various testing frameworks to understand their unique features, strengths, and trade-offs.
+A simple playground for testing different web testing frameworks. This project provides a set of mock HTML pages and allows you to implement the same tests using various testing frameworks to understand their differences and similarities.
 
-## 🚀 Features
+## Available Testing Frameworks
 
-- Simple, focused web application for testing demonstrations
-- Implementation of tests using multiple frameworks:
-  - WebdriverIO
-  - Cypress
-  - Playwright
-  - Selenium
-  - TestCafe
+- WebdriverIO
+- Cypress
+- Playwright
+- TestCafe
 
-## 🛠️ Tech Stack
+## Getting Started
 
-- HTML5
-- CSS3 (using Pico CSS framework)
-- Various testing frameworks (as listed above)
-
-## 📋 Prerequisites
-
-- Node.js (v14 or higher recommended)
-- npm or yarn package manager
-- Git
-
-## 🚀 Getting Started
-
-1. Clone the repository:
+1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/testing-playground.git
+   git clone <repository-url>
    cd testing-playground
    ```
 
-2. Install dependencies (when available):
+2. Install your chosen testing framework:
    ```bash
-   npm install
-   # or
-   yarn install
+   npm run setup
+   ```
+   This will prompt you to select which framework you want to install.
+
+3. Run tests:
+   ```bash
+   # For WebdriverIO
+   npm run test:webdriverio
+
+   # For Cypress
+   npm run test:cypress
+
+   # For Playwright
+   npm run test:playwright
+
+   # For TestCafe
+   npm run test:testcafe
    ```
 
-3. Open the project in your browser:
-   - Navigate to the `app` directory
-   - Open `index.html` in your preferred web browser
-
-## 🧪 Testing Frameworks
-
-This project demonstrates testing implementations using various frameworks:
-
-### WebdriverIO
-- Next-gen browser and mobile automation test framework
-- Intuitive API for stable automated testing
-- Built-in support for modern web frameworks
-
-### Cypress
-- Modern, all-in-one testing framework
-- Real-time reloading
-- Time travel debugging capabilities
-
-### Playwright
-- Reliable end-to-end testing
-- Multiple browser engine support
-- Powerful automation capabilities
-
-### Selenium
-- Original web testing framework
-- Extensive browser support
-- Large ecosystem of tools and plugins
-
-### TestCafe
-- Node.js-based end-to-end testing
-- No WebDriver installation required
-- Cross-browser testing support
-
-## 📚 Project Structure
+## Project Structure
 
 ```
-testing-playground/
-├── app/
-│   ├── css/
-│   │   └── vendor/
-│   │       └── pico.min.css
-│   ├── index.html
-│   └── contact.html
-├── .gitignore
-└── README.md
+.
+├── app/                    # Mock HTML pages to test
+├── tests/                  # Testing frameworks
+│   ├── webdriverio/       # WebdriverIO tests
+│   ├── cypress/          # Cypress tests
+│   ├── playwright/       # Playwright tests
+│   └── testcafe/         # TestCafe tests
+└── scripts/              # Setup and utility scripts
 ```
 
-## 📄 License
+## Adding New Tests
 
-This project is open source and available under the [MIT License](LICENSE).
+Each framework has its own directory under `tests/`. Navigate to your chosen framework's directory and add your tests there. The mock HTML pages in the `app/` directory serve as the test subjects.
 
-## 👥 Authors
+## Contributing
 
-- Andrei S. - Initial work
+Feel free to contribute by:
+1. Adding more test examples
+2. Improving the mock HTML pages
+3. Adding more testing frameworks
+4. Enhancing the setup process
 
-## 🙏 Acknowledgments
+## License
 
-- [Pico CSS](https://picocss.com/) for the beautiful CSS framework
-- All testing framework communities for their excellent documentation and support 
+ISC 

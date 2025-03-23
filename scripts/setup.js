@@ -1,22 +1,69 @@
 const { execSync } = require('child_process');
 const readline = require('readline');
+const fs = require('fs');
+const path = require('path');
 
 const frameworks = {
   webdriverio: {
     name: 'WebdriverIO',
-    dependencies: ['@wdio/cli', '@wdio/local-runner', '@wdio/mocha-framework', '@wdio/spec-reporter', 'chromedriver']
+    packageJson: {
+      name: "testing-playground-webdriverio",
+      version: "1.0.0",
+      description: "WebdriverIO tests for Testing Playground",
+      scripts: {
+        test: "wdio run ./wdio.conf.js"
+      },
+      dependencies: {
+        "@wdio/cli": "^8.32.3",
+        "@wdio/local-runner": "^8.32.3",
+        "@wdio/mocha-framework": "^8.32.3",
+        "@wdio/spec-reporter": "^8.32.3",
+        "wdio-chromedriver-service": "^8.1.1",
+        "chromedriver": "^122.0.3"
+      }
+    }
   },
   cypress: {
     name: 'Cypress',
-    dependencies: ['cypress']
+    packageJson: {
+      name: "testing-playground-cypress",
+      version: "1.0.0",
+      description: "Cypress tests for Testing Playground",
+      scripts: {
+        test: "cypress run"
+      },
+      dependencies: {
+        "cypress": "^13.6.6"
+      }
+    }
   },
   playwright: {
     name: 'Playwright',
-    dependencies: ['@playwright/test']
+    packageJson: {
+      name: "testing-playground-playwright",
+      version: "1.0.0",
+      description: "Playwright tests for Testing Playground",
+      scripts: {
+        test: "playwright test"
+      },
+      dependencies: {
+        "@playwright/test": "^1.42.1"
+      }
+    }
   },
   testcafe: {
     name: 'TestCafe',
-    dependencies: ['testcafe']
+    packageJson: {
+      name: "testing-playground-testcafe",
+      version: "1.0.0",
+      description: "TestCafe tests for Testing Playground",
+      scripts: {
+        test: "testcafe chrome tests/"
+      },
+      dependencies: {
+        "testcafe": "^3.5.0"
+      }
+    }
   }
 };
 
@@ -43,25 +90,26 @@ rl.question('\nWhich framework would you like to install? (Enter the framework n
   console.log(`\nInstalling ${framework.name}...`);
   
   try {
-    // Create package.json for the framework
-    const packageJson = {
-      name: `testing-playground-${answer.toLowerCase()}`,
-      version: '1.0.0',
-      description: `Testing playground using ${framework.name}`,
-      scripts: {
-        test: 'echo "Add your test script here"'
-      },
-      dependencies: framework.dependencies
-    };
+    const frameworkDir = path.join('tests', answer.toLowerCase());
+    
+    // Create framework directory if it doesn't exist
+    if (!fs.existsSync(frameworkDir)) {
+      fs.mkdirSync(frameworkDir, { recursive: true });
+    }
 
     // Write package.json
-    require('fs').writeFileSync(
-      `tests/${answer.toLowerCase()}/package.json`,
-      JSON.stringify(packageJson, null, 2)
+    fs.writeFileSync(
+      path.join(frameworkDir, 'package.json'),
+      JSON.stringify(framework.packageJson, null, 2)
     );
 
     // Install dependencies
-    execSync(`cd tests/${answer.toLowerCase()} && npm install`, { stdio: 'inherit' });
+    execSync(`cd ${frameworkDir} && npm install`, { stdio: 'inherit' });
+
+    // For WebdriverIO, we need to create a config file
+    if (answer.toLowerCase() === 'webdriverio') {
+      execSync(`cd ${frameworkDir} && npx wdio config --yes`, { stdio: 'inherit' });
+    }
 
     console.log(`\n${framework.name} has been successfully installed!`);
     console.log(`\nTo run tests, use: npm run test:${answer.toLowerCase()}`);

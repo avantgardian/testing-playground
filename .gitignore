@@ -34,6 +34,13 @@ coverage/
 allure-results/
 allure-report/
 
+# Cypress specific
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+cypress/results/
+cypress/reports/
+
 # Temporary files
 .cache/
 tmp/

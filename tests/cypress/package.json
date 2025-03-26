@@ -1,0 +1,15 @@
+{
+  "name": "testing-playground-cypress",
+  "version": "1.0.0",
+  "description": "Cypress tests for Testing Playground",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "start-server": "http-server ../../app -p 8080",
+    "test": "npm run start-server & sleep 2 && cypress run && kill $!"
+  },
+  "devDependencies": {
+    "cypress": "^13.6.6",
+    "http-server": "^14.1.1"
+  }
+}

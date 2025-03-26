@@ -41,6 +41,9 @@ cypress/downloads/
 cypress/results/
 cypress/reports/
 
+# Private files
+CONTEXT.md
+
 # Temporary files
 .cache/
 tmp/

@@ -41,6 +41,14 @@ cypress/downloads/
 cypress/results/
 cypress/reports/
 
+# TestCafe specific
+tests/testcafe/screenshots/
+tests/testcafe/reports/
+tests/testcafe/artifacts/
+tests/testcafe/browser-logs/
+tests/testcafe/.testcaferc.json
+tests/testcafe/test-results/
+
 # Private files
 CONTEXT.md
 

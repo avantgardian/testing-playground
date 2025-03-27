@@ -1,0 +1,20 @@
+{
+  "name": "testcafe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "testcafe chrome:headless tests/**/*.js",
+    "test:all": "testcafe all tests/**/*.js",
+    "test:report": "testcafe chrome:headless tests/**/*.js --reporter html:reports/report.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "testcafe": "^3.6.1"
+  }
+}

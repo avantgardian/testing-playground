@@ -49,6 +49,12 @@ tests/testcafe/browser-logs/
 tests/testcafe/.testcaferc.json
 tests/testcafe/test-results/
 
+# Playwright specific
+tests/playwright/test-results/
+tests/playwright/playwright-report/
+tests/playwright/blob-report/
+tests/playwright/playwright/.cache/
+
 # Private files
 CONTEXT.md
 

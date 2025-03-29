@@ -1,6 +1,6 @@
 # Testing Playground Project
 
-This project serves as a testing playground for implementing and practicing different testing frameworks. It includes a simple web application with a contact form and navigation, along with test suites using WebdriverIO, Cypress, and TestCafe.
+This project serves as a testing playground for implementing and practicing different testing frameworks. It includes a simple web application with a contact form and navigation, along with test suites using WebdriverIO, Cypress, TestCafe, and Playwright.
 
 ## Project Structure
 
@@ -26,10 +26,14 @@ This project serves as a testing playground for implementing and practicing diff
 │   │   ├── support/      # Support files and commands
 │   │   ├── cypress.config.js  # Cypress configuration
 │   │   └── package.json  # Cypress dependencies
-│   └── testcafe/        # TestCafe tests
+│   ├── testcafe/        # TestCafe tests
+│   │   ├── tests/       # Test files
+│   │   ├── reports/     # Test reports
+│   │   └── package.json # TestCafe dependencies
+│   └── playwright/      # Playwright tests
 │       ├── tests/       # Test files
-│       ├── reports/     # Test reports
-│       └── package.json # TestCafe dependencies
+│       ├── test-results/# Test results and reports
+│       └── package.json # Playwright dependencies
 └── .gitignore           # Git ignore rules
 ```
 
@@ -54,9 +58,14 @@ npm install
 # Install TestCafe dependencies
 cd ../testcafe
 npm install
+
+# Install Playwright dependencies
+cd ../playwright
+npm install
+npx playwright install chromium
 ```
 
-3. Start the local HTTP server (required for Cypress and TestCafe):
+3. Start the local HTTP server (required for Cypress, TestCafe, and Playwright):
 ```bash
 npm run server
 ```
@@ -83,6 +92,16 @@ npm run test:all   # Run tests in all available browsers
 npm run test:report # Run tests and generate HTML report
 ```
 
+### Playwright Tests
+```bash
+cd tests/playwright
+npm test           # Run tests in headless mode
+npm run test:headed # Run tests in headed mode
+npm run test:ui     # Run tests with Playwright UI
+npm run test:debug  # Run tests in debug mode
+npm run report      # Show HTML report
+```
+
 ## Test Coverage
 
 ### WebdriverIO Tests
@@ -103,6 +122,14 @@ npm run test:report # Run tests and generate HTML report
 - Navigation link functionality
 - Cross-browser testing support
 
+### Playwright Tests
+- Contact form field visibility and attributes
+- Required field validation
+- Navigation link functionality
+- Cross-browser testing support
+- Built-in test reporting
+- Screenshot capture on failure
+
 ## Key Features
 
 1. Contact Form
@@ -120,14 +147,16 @@ npm run test:report # Run tests and generate HTML report
    - WebdriverIO with Page Object Model
    - Cypress with Custom Commands
    - TestCafe with Cross-browser Support
+   - Playwright with Modern Testing Features
 
 ## Development Notes
 
-- The project uses a local HTTP server (port 8080) for Cypress and TestCafe tests
+- The project uses a local HTTP server (port 51564) for Cypress, TestCafe, and Playwright tests
 - WebdriverIO tests use file:// protocol for local testing
 - All test suites are configured for headless execution
 - Custom commands and helpers are implemented for common test operations
 - Screenshots are captured on test failures (all frameworks)
+- Playwright provides built-in test reporting and debugging tools
 
 ## Technical Details
 
@@ -135,6 +164,7 @@ npm run test:report # Run tests and generate HTML report
 - WebdriverIO version: Latest
 - Cypress version: 13.17.0
 - TestCafe version: 3.6.1
+- Playwright version: 1.42.1
 - Git repository: https://github.com/avantgardian/testing-playground.git
 
 ## Next Steps
@@ -145,7 +175,8 @@ npm run test:report # Run tests and generate HTML report
 4. Set up continuous integration
 5. Add performance testing
 6. Implement parallel test execution
-7. Add more testing frameworks (e.g., Playwright)
+7. Add more testing frameworks
+8. Set up cross-browser testing for all frameworks
 
 ## Contributing
 
@@ -156,6 +187,7 @@ Feel free to contribute by:
 4. Enhancing the setup process
 5. Improving test coverage
 6. Adding new test scenarios
+7. Implementing visual regression tests
 
 ## License
 
